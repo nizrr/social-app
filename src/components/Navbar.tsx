@@ -1,14 +1,16 @@
 import Link from "next/link";
 import * as React from "react";
-import ModeToggle from "@/components/ModeToggle";
-import { Button } from "@/components/ui/button";
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import DesktopNavbar from "./DesktopNavbar";
 import MobileNavbar from "./MobileNavbar";
+import { syncUser } from "@/actions/user.action";
+import { currentUser } from "@clerk/nextjs/server";
 
-function Navbar() {
+async function Navbar() {
+	const user = await currentUser();
+	console.log("🚀 ~ Navbar ~ user:", user);
+	if (user) await syncUser();
 	return (
-		<nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+		<nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-sm supports-backdrop-filter:bg-background/60">
 			<div className="max-w-7xl mx-auto px-4">
 				<div className="flex items-center justify-between h-16">
 					<div className="flex items-center">
@@ -18,19 +20,7 @@ function Navbar() {
 							Socially
 						</Link>
 					</div>
-					{/* <div className="flex items-center gap-3">
-						
 
-						<SignedOut>
-							<SignInButton mode="modal">
-								<Button>Sign in</Button>
-							</SignInButton>
-						</SignedOut>
-						<SignedIn>
-							<UserButton />
-						</SignedIn>
-						<Button variant={"secondary"}>Click Me</Button>
-					</div> */}
 					<DesktopNavbar />
 					<MobileNavbar />
 				</div>
