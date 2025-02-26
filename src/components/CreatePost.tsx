@@ -21,7 +21,7 @@ function CreatePost() {
 		setIsPosting(true);
 		try {
 			const result = await createPost(content, imageUrl);
-			if (result.success) {
+			if (result?.success) {
 				setContent("");
 				setImageUrl("");
 				setShowImageUpload(false);
@@ -39,11 +39,9 @@ function CreatePost() {
 		<Card className="mb-6">
 			<CardContent className="pt-6">
 				<div className="space-y-4 flex space-x-4">
-					<Avatar className="w-10 h-10">
-						<AvatarImage src={`${user?.imageUrl}`}></AvatarImage>
-					</Avatar>
+					<Avatar className="w-10 h-10">{user?.imageUrl && <AvatarImage src={`${user?.imageUrl}` || "avatar.png"}></AvatarImage>}</Avatar>
 					<Textarea
-						className="border-none min-h-[100px] resize-none focus-visible:ring-0 p-0 text-base"
+						className="border-none min-h-[100px] resize-none focus-visible:ring-0 p-0 text-base shadow-none"
 						value={content}
 						onChange={(e) => setContent(e.target.value)}
 						placeholder="What's on your mind?"

@@ -54,10 +54,11 @@ model Post {
 }
 
 model Comment {
-  id       String @id @default(cuid())
-  content  String
-  authorId String
-  postId   String
+  id        String   @id @default(cuid())
+  content   String
+  authorId  String
+  postId    String
+  createdAt DateTime @default(now())
 
   //Relations
   author       User           @relation(fields: [authorId], references: [id], onDelete: Cascade)
@@ -87,8 +88,8 @@ model Follows {
   createdAt   DateTime @default(now())
 
   //Relations
-  follower  User    @relation("follower", fields: [followerId], references: [id], onDelete: Cascade)
-  following User    @relation("following", fields: [followingId], references: [id], onDelete: Cascade)
+  follower  User @relation("follower", fields: [followerId], references: [id], onDelete: Cascade)
+  following User @relation("following", fields: [followingId], references: [id], onDelete: Cascade)
 
   @@id([followerId, followingId])
   @@index([followerId, followingId])

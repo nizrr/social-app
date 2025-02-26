@@ -7,7 +7,6 @@ import { currentUser } from "@clerk/nextjs/server";
 
 async function Navbar() {
 	const user = await currentUser();
-	console.log("🚀 ~ Navbar ~ user:", user);
 	if (user) await syncUser();
 	return (
 		<nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-sm supports-backdrop-filter:bg-background/60">

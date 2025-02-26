@@ -6,8 +6,7 @@ import FollowButton from "./FollowButton";
 
 async function RecommendedUsers() {
 	const users = await getRandomUsers();
-	console.log("🚀 ~ RecommendedUsers ~ users:", users);
-	// if (users.length === 0) return null;
+	if (users.length === 0) return null;
 	return (
 		<Card>
 			<CardHeader>
