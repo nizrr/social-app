@@ -25,7 +25,7 @@ function MobileNavbar() {
 				</SheetTrigger>
 				<SheetContent
 					side="right"
-					className="w-[300]">
+					className="w-300">
 					<SheetHeader>
 						<SheetTitle>Menu</SheetTitle>
 					</SheetHeader>

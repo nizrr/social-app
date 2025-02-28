@@ -166,7 +166,7 @@ function PostCard({ post, dbUserId }: { post: Post; dbUserId: string | null }) {
 									<div
 										key={comment.id}
 										className="flex space-x-3">
-										<Avatar className="size-8 flex-shrink-0">
+										<Avatar className="size-8 shrink-0">
 											<AvatarImage src={comment.author.image ?? "/avatar.png"} />
 										</Avatar>
 										<div className="flex-1 min-w-0">
@@ -186,7 +186,7 @@ function PostCard({ post, dbUserId }: { post: Post; dbUserId: string | null }) {
 
 							{user ? (
 								<div className="flex space-x-3">
-									<Avatar className="size-8 flex-shrink-0">
+									<Avatar className="size-8 shrink-0">
 										<AvatarImage src={user?.imageUrl || "/avatar.png"} />
 									</Avatar>
 									<div className="flex-1">
